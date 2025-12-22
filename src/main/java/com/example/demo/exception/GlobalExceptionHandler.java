@@ -1,4 +1,4 @@
-package com.example.demo.exception; // Ensure this package is correct
+package com.example.demo.exception; // MUST MATCH THE OTHER FILES
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,17 +11,8 @@ import java.time.LocalDateTime;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorDetails> handleResourceNotFoundException(
-            ResourceNotFoundException ex, WebRequest request) {
-        
-        ErrorDetails errorDetails = new ErrorDetails(
-            LocalDateTime.now(), 
-            ex.getMessage(), 
-            request.getDescription(false)
-        );
-        
+    public ResponseEntity<ErrorDetails> handleResourceNotFound(ResourceNotFoundException ex, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
-    
-    // ... other handlers
 }
