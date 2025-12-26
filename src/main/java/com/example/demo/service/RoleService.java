@@ -1,17 +1,17 @@
 package com.example.demo.service;
 
 import java.util.List;
-import com.example.demo.entity.Role;
+import com.example.demo.entity.UserAccount;
 
-public interface RoleService {
+public interface UserAccountService {
 
-    Role createRole(Role role);
+    UserAccount createUser(UserAccount user);
 
-    List<Role> getAllRoles();
+    UserAccount updateUser(long id, UserAccount user);
 
-    Role getRoleById(long id);
+    UserAccount getUserById(long id);
 
-    Role updateRole(long id, Role role);
+    void deactivateUser(long id);
 
-    void deactivateRole(long id);
+    List<UserAccount> getAllUsers();
 }
